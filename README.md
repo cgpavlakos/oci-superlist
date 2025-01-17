@@ -11,7 +11,7 @@ List all Oracle Cloud resources in a compartment, and export to CSV.
   - Has the very good idea (and with a much better implementation than me!) to work on "object categories"  
 
 ## Why does this exist? 
-I was charged with reducing consumption on an Oracle Cloud tenancy by 90% because things had spiralled out of control with folks just spinning things up and never coming back to turn them off. However, there are a few critical things running so running something like [OCI-SuperDelete](https://github.com/AnykeyNL/OCI-SuperDelete) at the root compartment would be too disruptive. I have used [CD3](https://github.com/oracle-devrel/cd3-automation-toolkit) in the past and it gives a very nice detailed export, but it's overkill for my scenario. 
+I was charged with reducing consumption on an Oracle Cloud tenancy by 90% because things had spiralled out of control with folks just spinning things up and never coming back to turn them off. However, there are a few critical things running so running something like [OCI-SuperDelete](https://github.com/AnykeyNL/OCI-SuperDelete) at the root compartment would be too disruptive. I have used [CD3](https://github.com/oracle-devrel/cd3-automation-toolkit) in the past and it gives a very nice detailed export, but it's overkill for my scenario and I wanted the export formatted completely differently. 
 
 So I did my normal thing... spend the better part of few days writing up a program to do something I could do manually in a few hours at most. Enjoy! 
 
