@@ -3,12 +3,15 @@ List all Oracle Cloud resources in a compartment, and export to CSV.
 
 ## Inspired by:
 - [OCI-SuperDelete](https://github.com/AnykeyNL/OCI-SuperDelete)
-  - Almost evertyhing in OCI-SuperList is a modification of the SUPERB work done on this tool to blow things away. Highly recommend OCI-SuperDelete for all your nuking needs. 
+  - Almost evertyhing in OCI-SuperList is a modification of the SUPERB work done by that team
+  - I highly recommend OCI-SuperDelete for all your nuking needs!
 - [CD3](https://github.com/oracle-devrel/cd3-automation-toolkit)
-  - The excel export was essentially what I need, but CD3 is overkill here.  
+  - The excel export was essentially what I need, but CD3 is overkill here
+- [ociextirpate](https://github.com/therealcmj/ociextirpater)
+  - Has the very good idea (and with a much better implementation than me!) to work on "object categories"  
 
 ## Why does this exist? 
-I was charged with reducing consumption on an Oracle Cloud tenancy by 90% because things had spiralled out of control with folks just spinning things up and never coming back to turn them off. However, there are a few critical things running so running something like [OCI-SuperDelete](https://github.com/AnykeyNL/OCI-SuperDelete) at the root compartment would be too disruptive. I have used [CD3](https://github.com/oracle-devrel/cd3-automation-toolkit) in the past and it gives a very nice detailed export, but it's overkill for my scenario. So I did my normal thing... spend a week writing up a program to do something I could do manually in a few hours at most. Enjoy! 
+I was charged with reducing consumption on an Oracle Cloud tenancy by 90% because things had spiralled out of control with folks just spinning things up and never coming back to turn them off. However, there are a few critical things running so running something like [OCI-SuperDelete](https://github.com/AnykeyNL/OCI-SuperDelete) at the root compartment would be too disruptive. I have used [CD3](https://github.com/oracle-devrel/cd3-automation-toolkit) in the past and it gives a very nice detailed export, but it's overkill for my scenario. So I did my normal thing... spend the better part of few days writing up a program to do something I could do manually in a few hours at most. Enjoy! 
 
 I used this tool to get a list of the resources that were burning a hole in my pocket along with metadata like when they were created, by who, and what compartment tree (business unit) they fall under. This made it easy for me to see things that can be terminated, and follow up with folks (and their managers) for anything I was unsure about. Consumption in the tenancy I administer is down to under $800 per day from a peak of $3,400 per day. Only 76% of my 90% goal, but that's because of politics, not tooling! 
 
@@ -54,8 +57,17 @@ Currently on my list:
 - Add a Category column to the CSV
 - Fix up missing/incomplete services
 - Add "if verbose" to optionally list out "detail items" that I have commented out for now
+  - maybe this is more intuitive as a "detail level 1, 2, 3" structure
 - Refactor and clean up code (not likely!)
 
+Future Plans (OCI-TargetedDelete):
+- Read input from a CSV and terminate resources based on some structure
+- Check if resources have been tagged properly and terminate them if not
+  - or add to a "cull list" csv for review before action
+- Check EOL tag and terminate if in the past
+  - or add to a "cull list" csv for review before action
+
+## How Does It Work?
 If you want to dig in and understand or modify the code, the important things to look at are:
 - `list.py` inside of the Regions loop for the main flow
 - `functions.py` and `anylist.py` for details of how the details are gathered
