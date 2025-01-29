@@ -60,6 +60,7 @@ oci.circuit_breaker.NoCircuitBreakerStrategy()
 #################################################
 # Specify your config file
 configfile = "~/.oci/config"  # Linux
+# configfile = "/etc/oci/config" # Cloud Shell
 # configfile = "\\Users\\username\\.oci\\config"  # Windows
 
 # Specify your config profile
